@@ -1,3 +1,5 @@
+[![Code Health](https://landscape.io/github/fmfn/FTRLp/master/landscape.svg?style=flat)](https://landscape.io/github/fmfn/FTRLp/master)
+
  ------------ Follow The Regularized Leader - Proximal ------------
 
 FTRL-P is an online classification algorithm that combines both L1 and L2 regularization and feature based, adaptive 
