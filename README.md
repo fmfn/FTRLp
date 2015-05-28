@@ -29,6 +29,5 @@ The main object...
 
 
 References:
-    * Follow-the-Regularized-Leader and Mirror Descent: Equivalent Theorems
-      and L1 Regularization, H. Brendan McMahan
-    * Ad Click Prediction: a View from the Trenches, H. Brendan McMahan et. al.
+* Follow-the-Regularized-Leader and Mirror Descent: Equivalent Theorems and L1 Regularization, H. Brendan McMahan
+* Ad Click Prediction: a View from the Trenches, H. Brendan McMahan et. al.
