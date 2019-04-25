@@ -22,11 +22,11 @@ References:
     * Ad Click Prediction: a View from the Trenches, H. Brendan McMahan et. al.
 
 """
-
 from math import log, exp, fabs, sqrt
 from csv import DictReader
 from datetime import datetime
 from random import random
+from hashlib import sha256
 
 
 def log_loss(y, p):
@@ -41,6 +41,21 @@ def log_loss(y, p):
     """
     p = max(min(p, 1. - 10e-15), 10e-15)
     return -log(p) if y == 1 else -log(1. - p)
+
+
+def to_hash(value):
+    """
+    Hashes values for hashing trick.
+    Treats numbers as strings.
+
+    :param value: Any value that should be trated as category.
+    :return: hashed value.
+    """
+    if not isinstance(value, bytes):
+        value = str(value).encode('utf-8')
+    hex_value = sha256(value).hexdigest()
+    int_hash = int(hex_value, 16)
+    return int_hash
 
 
 class DataGen(object):
@@ -221,7 +236,7 @@ class DataGen(object):
 
                 # --- Hash
                 # One-hot encode everything with hash trick
-                index = (abs(hash(key + '_' + value)) % (self.mf - size)) + size
+                index = to_hash(key + '_' + value) % (self.mf - size) + size
                 x[index] = 1.
 
                 # --- Save Name
